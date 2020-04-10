@@ -1,16 +1,22 @@
 {{ define "content" }}
 
+{{ $service1 := dict "icon" "fas fa-code"     "href" "https://eiken.dev/" }}
+{{ $service2 := dict "icon" "fab fa-github"   "href" "https://github.com/eikendev" }}
+{{ $service3 := dict "icon" "fab fa-gitlab"   "href" "https://gitlab.com/eikendev" }}
+{{ $service4 := dict "icon" "fab fa-linkedin" "href" "https://www.linkedin.com/in/raphael-eikenberg/" }}
+{{ $service5 := dict "icon" "fab fa-twitter"  "href" "https://twitter.com/eikendev" }}
+
+{{ $services := slice $service1 $service2 $service3 $service4 $service5 }}
+
 <div id="content" class="p-3">
 	<img src="/img/profile.png" alt="Profile picture" class="ml-auto mr-auto rounded-circle shadow-sm" />
 	<h1 class="text-center">Hello, I'm Raphael.</h1>
 	<p class="lead">I'm a computer science enthusiast and I like to solve problems related to both software and hardware. At the moment, I'm studying for my Master's degree in information security at <a href="https://ethz.ch/">ETH Zürich</a>.</p>
 	<p class="lead">Over the years I've developed custom solutions, either to cover my own needs, or out of plain curiosity. You can check out my personal projects at <a href="https://eiken.dev/">eiken.dev</a> or directly visit my public profiles to get an overview of my past work. I've also started a <a href="https://eiken.dev/blog">blog</a> where I'll discuss some computer science related topics every now and then.</p>
 	<div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center ml-auto mr-auto">
-		<a href="https://eiken.dev/" class="border rounded btn-contact"><div><i class="fas fa-code fa-2x" style="vertical-align: middle;"></i></div></a>
-		<a href="https://github.com/eikendev" class="border rounded btn-contact"><div><i class="fab fa-github fa-2x" style="vertical-align: middle;"></i></div></a>
-		<a href="https://gitlab.com/eikendev" class="border rounded btn-contact"><div><i class="fab fa-gitlab fa-2x" style="vertical-align: middle;"></i></div></a>
-		<a href="https://www.linkedin.com/in/raphael-eikenberg/" class="border rounded btn-contact"><div><i class="fab fa-linkedin fa-2x" style="vertical-align: middle;"></i></div></a>
-		<a href="https://twitter.com/eikendev" class="border rounded btn-contact"><div><i class="fab fa-twitter fa-2x" style="vertical-align: middle;"></i></div></a>
+		{{ range $services }}
+		<a href="{{ .href }}" class="border rounded btn-contact"><div><i class="{{ .icon }} fa-2x" style="vertical-align: middle;"></i></div></a>
+		{{ end }}
 		<a href="#" class="border rounded btn-contact" data-name="raphael" data-domain="eikenberg" data-tld="at" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><div><i class="fas fa-envelope fa-2x" style="vertical-align: middle;"></i></div></a>
 	</div>
 </div>
