@@ -1,0 +1,17 @@
+baseURL = "https://eikenberg.at/"
+languageCode = "en-us"
+title = "Raphael Eikenberg"
+disableHugoGeneratorInject = true
+enableRobotsTXT = true
+
+[params]
+	author = "Raphael Eikenberg"
+	description = "Just a few words about myself."
+	keywords = "about, portfolio"
+	twitter = "eikendev"
+
+# https://gohugo.io/templates/sitemap-template/
+[sitemap]
+	changefreq = "weekly"
+	filename = "sitemap.xml"
+	priority = 0.5
