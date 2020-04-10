@@ -1,10 +1,18 @@
 {{ define "content" }}
 
 {{ $service1 := dict "icon" "fas fa-code"     "href" "https://eiken.dev/" }}
-{{ $service2 := dict "icon" "fab fa-github"   "href" "https://github.com/eikendev" }}
-{{ $service3 := dict "icon" "fab fa-gitlab"   "href" "https://gitlab.com/eikendev" }}
-{{ $service4 := dict "icon" "fab fa-linkedin" "href" "https://www.linkedin.com/in/raphael-eikenberg/" }}
-{{ $service5 := dict "icon" "fab fa-twitter"  "href" "https://twitter.com/eikendev" }}
+
+{{ $service2_link := printf "https://github.com/%s" $.Site.Params.github }}
+{{ $service2 := dict "icon" "fab fa-github"   "href" $service2_link }}
+
+{{ $service3_link := printf "https://gitlab.com/%s" $.Site.Params.gitlab }}
+{{ $service3 := dict "icon" "fab fa-gitlab"   "href" $service3_link }}
+
+{{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Params.linkedin }}
+{{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
+
+{{ $service5_link := printf "https://twitter.com/%s" $.Site.Params.twitter }}
+{{ $service5 := dict "icon" "fab fa-twitter"  "href" $service5_link }}
 
 {{ $services := slice $service1 $service2 $service3 $service4 $service5 }}
 

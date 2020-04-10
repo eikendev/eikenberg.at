@@ -4,10 +4,16 @@ title = "Raphael Eikenberg"
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
 
+# Do not include any taxonomies in sitemap.
+[taxonomies]
+
 [params]
 	author = "Raphael Eikenberg"
 	description = "Just a few words about myself."
 	keywords = "about, portfolio"
+	github = "eikendev"
+	gitlab = "eikendev"
+	linkedin = "raphael-eikenberg"
 	twitter = "eikendev"
 
 # https://gohugo.io/templates/sitemap-template/
