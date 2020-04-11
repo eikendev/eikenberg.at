@@ -1,0 +1,14 @@
+$yellow:  #efce4d;
+
+$primary:       $yellow;
+
+$border-radius: 2px;
+$border-radius-lg: 4px;
+$border-radius-sm: 1px;
+
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
+
+$link-color: $primary;
+$link-hover-color: lighten($link-color, 15%);
