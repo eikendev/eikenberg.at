@@ -3,14 +3,20 @@ image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+default:
+  before_script:
+    - apk add yarn
+
 test:
   script:
+  - yarn
   - hugo --minify
   except:
   - master
 
 pages:
   script:
+  - yarn
   - hugo --minify
   artifacts:
     paths:
