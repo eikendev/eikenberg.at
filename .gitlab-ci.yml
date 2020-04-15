@@ -1,13 +1,18 @@
-image: registry.gitlab.com/pages/hugo/hugo_extended:latest
-
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+stages:
+  - test
+  - deploy
+  - post_deploy
+
 default:
+  image: registry.gitlab.com/pages/hugo/hugo_extended:latest
   before_script:
     - apk add yarn
 
 test:
+  stage: test
   script:
     - yarn
     - hugo --minify
@@ -15,18 +20,27 @@ test:
     - master
 
 pages:
+  stage: deploy
   script:
     - yarn
     - hugo --minify
-  after_script:
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+purge_cache:
+  stage: post_deploy
+  image: alpine
+  before_script:
+    - apk add curl
+  script:
     - >
       curl
       -H "Authorization: Bearer $CLOUDFLARE_TOKEN"
       -H "Content-Type: application/json"
       --data '{"purge_everything":true}'
       -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
-  artifacts:
-    paths:
-      - public
   only:
     - master
