@@ -9,17 +9,24 @@ default:
 
 test:
   script:
-  - yarn
-  - hugo --minify
+    - yarn
+    - hugo --minify
   except:
-  - master
+    - master
 
 pages:
   script:
-  - yarn
-  - hugo --minify
+    - yarn
+    - hugo --minify
+  after_script:
+    - >
+      curl
+      -H "Authorization: Bearer $CLOUDFLARE_TOKEN"
+      -H "Content-Type: application/json"
+      --data '{"purge_everything":true}'
+      -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE/purge_cache"
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master
