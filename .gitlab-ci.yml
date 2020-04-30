@@ -2,7 +2,6 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 stages:
-  - test
   - deploy
   - post_deploy
 
@@ -11,18 +10,11 @@ default:
   before_script:
     - apk add yarn
 
-test:
-  stage: test
-  script:
-    - yarn
-    - hugo --minify
-  except:
-    - master
-
 pages:
   stage: deploy
   script:
     - yarn
+    - hugo version
     - hugo --minify
   artifacts:
     paths:
