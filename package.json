@@ -12,6 +12,6 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
-    "postcss-cli": "^7.1.0"
+    "postcss-cli": "7.1.0"
   }
 }
