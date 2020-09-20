@@ -10,7 +10,7 @@ enableRobotsTXT = true
 [params]
 	author = "Raphael Eikenberg"
 	description = "Just a few words about myself."
-	keywords = "about, portfolio"
+	keywords = "about, portfolio, eikendev"
 	github = "eikendev"
 	gitlab = "eikendev"
 	linkedin = "raphael-eikenberg"
