@@ -12,15 +12,18 @@
 {{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Social.linkedin }}
 {{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
 
-{{ $service5 := dict "icon" "fas fa-code"     "href" "https://eiken.dev/" }}
+{{ $service5 := dict "icon" "fas fa-code"     "href" "https://www.eiken.dev/" }}
 
 {{ $services := slice $service1 $service2 $service3 $service4 $service5 }}
 
 <div id="content" class="p-3">
-	<img src="/img/profile.webp" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow-sm" />
-	<h1 class="text-center">Hello, I'm Raphael.</h1>
-	<p class="lead">I'm a computer science enthusiast, and I love to solve problems related to both software and hardware. At the moment, I'm studying for my Master's degree in information security at <a href="https://ethz.ch/">ETH Zürich</a>.</p>
-	<p class="lead">Over the years, I've developed various tools, mainly for personal use. Have a look at <a href="https://eiken.dev/">my portfolio</a> or directly visit my public profiles to get an overview of my past work. I also run a <a href="https://eiken.dev/blog">blog</a> where I'll discuss some computer-science-related topics from time to time.</p>
+	<img src="{{ "img/profile.webp" | absURL }}" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow" />
+	<h1 class="text-center">{{ .Params.heading }}</h1>
+	<div class="lead">
+		{{ with .Content }}
+		{{ . }}
+		{{ end }}
+	</div>
 	<div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto my-4">
 		{{ range $services }}
 		<a href="{{ .href }}" class="border rounded btn-contact"><div><i class="{{ .icon }} fa-2x" style="vertical-align: middle;"></i></div></a>

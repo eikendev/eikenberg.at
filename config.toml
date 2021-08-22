@@ -18,6 +18,7 @@ enableRobotsTXT = true
 	author = "Raphael Eikenberg"
 	description = "Just a few words about myself."
 	keywords = "about, portfolio, eikendev"
+	images = ["/img/card.png"]
 
 # https://gohugo.io/templates/sitemap-template/
 [sitemap]
