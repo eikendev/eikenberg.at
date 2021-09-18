@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "My personal website",
 	"main": "index.js",
-	"repository": "https://gitlab.com/eikendev/eikendev.gitlab.io",
+	"repository": "https://github.com/eikendev/eikenberg.at",
 	"author": "eikendev <raphael@eiken.dev>",
 	"private": true,
 	"dependencies": {
