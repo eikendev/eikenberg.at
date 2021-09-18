@@ -1,4 +1,5 @@
-baseURL = "https://www.eikenberg.at/"
+#baseURL = "https://www.eikenberg.at/"
+baseURL = "https://eikenberg.pages.dev/"
 languageCode = "en-us"
 title = "Raphael Eikenberg"
 disableHugoGeneratorInject = true
