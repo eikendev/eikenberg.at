@@ -18,8 +18,8 @@
 
 <div id="content" class="p-3">
 	<img src="{{ "img/profile.webp" | absURL }}" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow" />
-	<h1 class="text-center">{{ .Params.heading }}</h1>
-	<div class="lead">
+	<h1 class="text-center mb-3">{{ .Params.heading }}</h1>
+	<div class="lead text-center">
 		{{ with .Content }}
 		{{ . }}
 		{{ end }}

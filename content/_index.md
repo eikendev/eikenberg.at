@@ -1,11 +1,9 @@
 ---
-heading: "Hello, I'm Raphael…"
+heading: "Hi, I'm Raphael"
 ---
 
-… and I love computers.
-Or to put it more generally: I enjoy solving problems related to the digital world.
-In my professional life, I focus my work on cybersecurity, a topic I'm very passionate about.
+… a corp-speak translator, business therapist, and professional proofreader with a serious love for cybersecurity.
 
-Over the years, I've engineered various tools to accommodate my personal needs.
-A selection of these is presented on [my portfolio](https://www.eiken.dev/); many others can be found directly on my public profiles below.
-Whenever I stumble upon a topic that sparks my curiosity, I write about it on my [blog](https://www.eiken.dev/blog).
+In my spare time, I love to code and tinker with new tools and technologies.
+Now that you're here, feel free to check out some of the projects I've engineered over the years on [my portfolio](https://www.eiken.dev/).
+And if you want to know what's on my mind, be sure to check out my [blog](https://www.eiken.dev/blog) where I write about random topics that spark my curiosity.
