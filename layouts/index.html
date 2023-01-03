@@ -3,11 +3,11 @@
 {{ $service1_link := printf "https://twitter.com/%s" $.Site.Social.twitter }}
 {{ $service1 := dict "icon" "fab fa-twitter"  "href" $service1_link }}
 
-{{ $service2_link := printf "https://github.com/%s" $.Site.Social.github }}
-{{ $service2 := dict "icon" "fab fa-github"   "href" $service2_link }}
+{{ $service2_link := printf "%s" $.Site.Social.mastodon }}
+{{ $service2 := dict "icon" "fab fa-mastodon"   "href" $service2_link }}
 
-{{ $service3_link := printf "https://gitlab.com/%s" $.Site.Social.gitlab }}
-{{ $service3 := dict "icon" "fab fa-gitlab"   "href" $service3_link }}
+{{ $service3_link := printf "https://github.com/%s" $.Site.Social.github }}
+{{ $service3 := dict "icon" "fab fa-github"   "href" $service3_link }}
 
 {{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Social.linkedin }}
 {{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
@@ -28,7 +28,6 @@
 		{{ range $services }}
 		<a href="{{ .href }}" class="border rounded btn-contact"><div><i class="{{ .icon }} fa-2x" style="vertical-align: middle;"></i></div></a>
 		{{ end }}
-		<a href="#" class="border rounded btn-contact" data-name="raphael" data-domain="eikenberg" data-tld="at" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"><div><i class="fas fa-envelope fa-2x" style="vertical-align: middle;"></i></div></a>
 	</div>
 </div>
 

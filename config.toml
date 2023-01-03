@@ -8,10 +8,10 @@ enableRobotsTXT = true
 [taxonomies]
 
 [social]
-	github = "eikendev"
-	gitlab = "eikendev"
-	linkedin = "raphael-eikenberg"
 	twitter = "eikendev"
+	mastodon = "https://infosec.exchange/@eikendev"
+	github = "eikendev"
+	linkedin = "raphael-eikenberg"
 
 [params]
 	title = "Raphael Eikenberg"
