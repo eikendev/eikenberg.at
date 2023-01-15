@@ -12,9 +12,7 @@
 {{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Social.linkedin }}
 {{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
 
-{{ $service5 := dict "icon" "fas fa-code"     "href" "https://www.eiken.dev/" }}
-
-{{ $services := slice $service1 $service2 $service3 $service4 $service5 }}
+{{ $services := slice $service1 $service2 $service3 $service4 }}
 
 <div id="content" class="p-3">
 	<img src="{{ "img/profile.webp" | absURL }}" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow" />
