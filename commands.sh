@@ -1,5 +1,4 @@
 HUGO_IMAGE='docker.io/hugomods/hugo:latest'
-HUGO_PORT='1313'
 
 ENGINE_COMMAND="$(command -v podman 2>/dev/null || command -v docker 2>/dev/null)"
 
