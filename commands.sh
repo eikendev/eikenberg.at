@@ -1,4 +1,4 @@
-HUGO_IMAGE='klakegg/hugo:ext'
+HUGO_IMAGE='docker.io/hugomods/hugo:latest'
 HUGO_PORT='1313'
 
 ENGINE_COMMAND="$(command -v podman 2>/dev/null || command -v docker 2>/dev/null)"
@@ -14,8 +14,7 @@ BASE_COMMAND="\
 	--interactive \
 	--rm=true \
 	--net=host \
-	-v '$(pwd)':/src \
-	--security-opt label=disable \
+	-v '$PWD':/src:Z \
 "
 
 YARN_COMMAND="\
@@ -26,6 +25,6 @@ YARN_COMMAND="\
 
 HUGO_COMMAND="\
 	$BASE_COMMAND \
-	-p $HUGO_PORT:$HUGO_PORT \
+	--entrypoint='hugo' \
 	$HUGO_IMAGE \
 "
