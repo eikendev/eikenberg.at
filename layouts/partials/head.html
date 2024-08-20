@@ -9,7 +9,7 @@
 {{- template "_internal/schema.html" . -}}
 {{- template "_internal/twitter_cards.html" . -}}
 
-{{ with .Site.Social.twitter -}}
+{{ with .Site.Params.social.twitter -}}
 <meta name="twitter:creator" content="@{{ . }}"/>
 {{ end -}}
 

@@ -7,18 +7,18 @@ enableRobotsTXT = true
 # Do not include any taxonomies in sitemap.
 [taxonomies]
 
-[social]
-	twitter = "eikendev"
-	mastodon = "https://infosec.exchange/@eikendev"
-	github = "eikendev"
-	linkedin = "raphael-eikenberg"
-
 [params]
 	title = "Raphael Eikenberg"
 	author = "Raphael Eikenberg"
 	description = "Just a few words about myself."
 	keywords = "about, portfolio, eikendev"
 	images = ["/img/card.png"]
+
+[params.social]
+	twitter = "eikendev"
+	mastodon = "https://infosec.exchange/@eikendev"
+	github = "eikendev"
+	linkedin = "raphael-eikenberg"
 
 # https://gohugo.io/templates/sitemap-template/
 [sitemap]

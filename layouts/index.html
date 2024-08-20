@@ -1,15 +1,15 @@
 {{ define "content" }}
 
-{{ $service1_link := printf "https://twitter.com/%s" $.Site.Social.twitter }}
+{{ $service1_link := printf "https://twitter.com/%s" $.Site.Params.social.twitter }}
 {{ $service1 := dict "icon" "fab fa-twitter"  "href" $service1_link }}
 
-{{ $service2_link := printf "%s" $.Site.Social.mastodon }}
+{{ $service2_link := printf "%s" $.Site.Params.social.mastodon }}
 {{ $service2 := dict "icon" "fab fa-mastodon"   "href" $service2_link }}
 
-{{ $service3_link := printf "https://github.com/%s" $.Site.Social.github }}
+{{ $service3_link := printf "https://github.com/%s" $.Site.Params.social.github }}
 {{ $service3 := dict "icon" "fab fa-github"   "href" $service3_link }}
 
-{{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Social.linkedin }}
+{{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Params.social.linkedin }}
 {{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
 
 {{ $services := slice $service1 $service2 $service3 $service4 }}
