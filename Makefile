@@ -1,15 +1,18 @@
-ENGINE_COMMAND := ${shell . ./commands.sh; echo $$ENGINE_COMMAND}
+ENGINE_COMMAND := ${shell . ./run; echo $$ENGINE_COMMAND}
+
+HUGO := ./run hugo
+YARN := ./run yarn
 
 .PHONY: all
 all: build
 
 .PHONY: dependencies
 dependencies:
-	./yarn install
+	$(YARN) install
 
 .PHONY: build
 build: dependencies
-	./hugo --minify
+	$(HUGO) --minify
 	# If we run using Docker, we should reset file ownership afterwards.
 ifneq (,$(findstring docker,${ENGINE_COMMAND}))
 	sudo chown -R ${shell id -u ${USER}}:${shell id -g ${USER}} ./public/
@@ -17,7 +20,7 @@ endif
 
 .PHONY: server
 server: dependencies
-	./hugo server --minify --buildDrafts
+	$(HUGO) server --minify --buildDrafts
 
 .PHONY: clean
 clean:
