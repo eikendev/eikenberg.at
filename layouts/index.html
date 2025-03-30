@@ -1,18 +1,15 @@
 {{ define "content" }}
 
-{{ $service1_link := printf "https://twitter.com/%s" $.Site.Params.social.twitter }}
-{{ $service1 := dict "icon" "fab fa-twitter"  "href" $service1_link }}
+{{ $service1_link := printf "https://bsky.app/profile/%s" $.Site.Params.social.bluesky }}
+{{ $service1 := dict "icon" "fab fa-bluesky"   "href" $service1_link }}
 
-{{ $service2_link := printf "%s" $.Site.Params.social.mastodon }}
-{{ $service2 := dict "icon" "fab fa-mastodon"   "href" $service2_link }}
+{{ $service2_link := printf "https://github.com/%s" $.Site.Params.social.github }}
+{{ $service2 := dict "icon" "fab fa-github"   "href" $service2_link }}
 
-{{ $service3_link := printf "https://github.com/%s" $.Site.Params.social.github }}
-{{ $service3 := dict "icon" "fab fa-github"   "href" $service3_link }}
+{{ $service3_link := printf "https://www.linkedin.com/in/%s/" $.Site.Params.social.linkedin }}
+{{ $service3 := dict "icon" "fab fa-linkedin" "href" $service3_link }}
 
-{{ $service4_link := printf "https://www.linkedin.com/in/%s/" $.Site.Params.social.linkedin }}
-{{ $service4 := dict "icon" "fab fa-linkedin" "href" $service4_link }}
-
-{{ $services := slice $service2 $service3 $service4 }}
+{{ $services := slice $service1 $service2 $service3 }}
 
 <div id="content" class="p-3">
 	<img src="{{ "img/profile.webp" | absURL }}" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow" />
