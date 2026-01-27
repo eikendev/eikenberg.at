@@ -1,0 +1,26 @@
+baseURL: "https://www.eikenberg.at/"
+languageCode: "en-us"
+title: "Raphael Eikenberg"
+disableHugoGeneratorInject: true
+enableRobotsTXT: true
+
+# Do not include any taxonomies in sitemap.
+taxonomies: {}
+
+params:
+  title: "Raphael Eikenberg"
+  author: "Raphael Eikenberg"
+  description: "Just a few words about myself."
+  keywords: "about, portfolio, eikendev"
+  images:
+    - "/img/card.png"
+  social:
+    bluesky: "eikendev.bsky.social"
+    github: "eikendev"
+    linkedin: "raphael-eikenberg"
+
+# https://gohugo.io/templates/sitemap-template/
+sitemap:
+  changefreq: "monthly"
+  filename: "sitemap.xml"
+  priority: 0.5
