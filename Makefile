@@ -24,6 +24,7 @@ server: dependencies
 
 .PHONY: clean
 clean:
+	rm -f .hugo_build.lock
 	rm -rf ./node_modules/
 	rm -rf ./public/
 	rm -rf ./resources/_gen/
