@@ -7,6 +7,17 @@ enableRobotsTXT: true
 # Do not include any taxonomies in sitemap.
 taxonomies: {}
 
+# Mount JS dependencies from node_modules into assets. Mounting any assets
+# target removes Hugo's default assets mount, so it is re-declared.
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - source: node_modules/bootstrap/dist/js/bootstrap.bundle.min.js
+      target: assets/js/bootstrap.bundle.js
+    - source: node_modules/@fortawesome/fontawesome-free/js/all.min.js
+      target: assets/js/fontawesome.all.js
+
 params:
   title: "Raphael Eikenberg"
   author: "Raphael Eikenberg"
