@@ -1,5 +1,5 @@
 baseURL: "https://www.eikenberg.at/"
-languageCode: "en-us"
+locale: "en-US"
 title: "Raphael Eikenberg"
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
