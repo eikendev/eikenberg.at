@@ -1,32 +1,80 @@
 <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="{{ $.Site.Params.author }}" />
-<meta name="description" content="{{ $.Site.Params.description }}">
-<meta name="keywords" content="{{ $.Site.Params.keywords }}" />
+<meta name="author" content="{{ site.Params.author }}" />
+<meta name="description" content="{{ site.Params.description }}" />
+<meta name="keywords" content="{{ site.Params.keywords }}" />
 
-{{- partial "opengraph.html" . -}}
-{{- partial "schema.html" . -}}
-{{- partial "twitter_cards.html" . -}}
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
 
-{{ with .Site.Params.social.twitter -}}
-<meta name="twitter:creator" content="@{{ . }}"/>
-{{ end -}}
 
-<title>{{ $.Site.Title }}</title>
+<title>{{ site.Title }}</title>
+<link rel="canonical" href="{{ .Permalink }}" />
 
-<link rel="canonical" href="{{ .Permalink }}">
+{{/* Self-hosted IBM Plex, mounted from @fontsource (see hugo.yaml), so there
+	is no third-party font request.
+*/}}
+{{ range slice
+	"ibm-plex-sans/ibm-plex-sans-latin-400-normal"
+	"ibm-plex-sans/ibm-plex-sans-latin-600-normal"
+	"ibm-plex-mono/ibm-plex-mono-latin-400-normal"
+	"ibm-plex-mono/ibm-plex-mono-latin-500-normal"
+}}
+	<link
+		rel="preload"
+		as="font"
+		type="font/woff2"
+		href="{{ (printf "fonts/%s.woff2" .) | absURL }}"
+		crossorigin
+	/>
+{{ end }}
+<style>
+	{{ range slice
+		(slice "IBM Plex Sans" "400" "ibm-plex-sans/ibm-plex-sans-latin-400-normal")
+		(slice "IBM Plex Sans" "600" "ibm-plex-sans/ibm-plex-sans-latin-600-normal")
+		(slice "IBM Plex Mono" "400" "ibm-plex-mono/ibm-plex-mono-latin-400-normal")
+		(slice "IBM Plex Mono" "500" "ibm-plex-mono/ibm-plex-mono-latin-500-normal")
+	}}
+		@font-face {
+			font-family: "{{ index . 0 }}";
+			font-style: normal;
+			font-weight: {{ index . 1 }};
+			font-display: swap;
+			src: url("{{ (printf "fonts/%s.woff2" (index . 2)) | absURL }}") format("woff2");
+		}
+	{{ end }}
+</style> {{ $css := resources.Get "css/main.css" }}
+{{ if hugo.IsProduction }}
+	{{ $css = $css | minify | fingerprint "sha384" }}
+{{ end }}
+<link
+	rel="stylesheet"
+	href="{{ $css.RelPermalink }}"
+	{{ with $css.Data.Integrity }}integrity="{{ . }}"{{ end }}
+/>
 
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | absURL }}" />
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}" />
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}" />
-<link rel="manifest" href="{{ "site.webmanifest" | absURL }}" />
-<link rel="mask-icon" href="{{ "safari-pinned-tab.svg" | absURL }}" color="#5bbad5" />
-<meta name="apple-mobile-web-app-title" content="{{ $.Site.Params.author }}">
-<meta name="application-name" content="{{ $.Site.Params.author }}">
-<meta name="msapplication-TileColor" content="#000000">
-<meta name="theme-color" content="#000000">
+{{/* Runs before first paint so a light-mode visitor never sees a dark flash.
+	Must stay in sync with the mode logic in assets/js/site.js.
+*/}}
+<script>
+	(function () {
+		var m = "system";
+		try {
+			m = localStorage.getItem("eikenberg-mode") || "system";
+		} catch (e) {}
+		var dark =
+			m === "system"
+				? window.matchMedia("(prefers-color-scheme: dark)").matches
+				: m === "dark";
+		document.documentElement.classList.toggle("light", !dark);
+		document.documentElement.dataset.mode = m;
+	})();
+</script>
 
-{{ $options := (dict "targetPath" "css/style.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules")) }}
-{{ $style := resources.Get "css/main.scss" | toCSS $options | postCSS (dict "config" "./assets/css/postcss.config.js") | fingerprint "sha384" }}
-<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+{{ with resources.Get "img/logo.svg" }}
+	<link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml" />
+{{ end }}
+<link rel="icon" href="{{ "favicon.ico" | absURL }}" sizes="32x32" />
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}" />
+<meta name="theme-color" content="{{ site.Params.themeColor }}" />

@@ -1,29 +1,99 @@
 {{ define "content" }}
+	{{ $work := site.Params.work }}
+	{{ $play := site.Params.play }}
 
-{{ $service1_link := printf "https://bsky.app/profile/%s" $.Site.Params.social.bluesky }}
-{{ $service1 := dict "icon" "fab fa-bluesky"   "href" $service1_link }}
 
-{{ $service2_link := printf "https://github.com/%s" $.Site.Params.social.github }}
-{{ $service2 := dict "icon" "fab fa-github"   "href" $service2_link }}
+	<div class="page" data-split>
+		<div class="row topbar">
+			<span class="brand">
+				<span class="brand-mark" aria-hidden="true">
+					{{ with resources.Get "img/logo.svg" }}
+						{{ .Content | safeHTML }}
+					{{ end }}
+				</span>
+				{{ site.Params.brand }}
+			</span>
+			<button
+				type="button"
+				class="theme"
+				data-theme-toggle
+				aria-label="Toggle color scheme"
+			>
+				<span data-icon-for="system"
+					>{{ partial "icon.html" (dict "name" "auto" "size" 13) }}</span
+				>
+				<span data-icon-for="dark" hidden
+					>{{ partial "icon.html" (dict "name" "dark" "size" 13) }}</span
+				>
+				<span data-icon-for="light" hidden
+					>{{ partial "icon.html" (dict "name" "light" "size" 13) }}</span
+				>
+				<span data-theme-label>auto</span>
+			</button>
+		</div>
 
-{{ $service3_link := printf "https://www.linkedin.com/in/%s/" $.Site.Params.social.linkedin }}
-{{ $service3 := dict "icon" "fab fa-linkedin" "href" $service3_link }}
+		<div class="row split">
+			<div class="side side-work">
+				<p class="kicker">{{ $work.kicker }}</p>
+				<h1 class="headline">
+					{{ delimit $work.headline "<br>" | safeHTML }}
+				</h1>
+				<div class="lines">
+					{{ range $work.lines }}
+						<div>{{ . | safeHTML }}</div>
+					{{ end }}
+				</div>
+				<div class="rule"></div>
+			</div>
 
-{{ $services := slice $service1 $service2 $service3 }}
+			<div class="portrait-wrap">
+				<div class="seam" aria-hidden="true"></div>
+				<img
+					class="portrait"
+					src="{{ "img/profile.webp" | absURL }}"
+					width="216"
+					height="216"
+					alt="{{ site.Params.author }}"
+				/>
+			</div>
 
-<div id="content" class="p-3">
-	<img src="{{ "img/profile.webp" | absURL }}" alt="Profile picture" class="mx-auto my-4 rounded-circle shadow" />
-	<h1 class="text-center mb-3">{{ .Params.heading }}</h1>
-	<div class="lead text-center">
-		{{ with .Content }}
-		{{ . }}
-		{{ end }}
+			<div class="side side-play">
+				<p class="kicker">{{ $play.kicker }}</p>
+				<h2 class="headline">
+					{{ delimit $play.headline "<br>" | safeHTML }}<span
+						class="caret"
+						aria-hidden="true"
+						>_</span
+					>
+				</h2>
+				<div class="lines">
+					{{ range $play.lines }}
+						<div>{{ . | safeHTML }}</div>
+					{{ end }}
+				</div>
+				<div class="rule"></div>
+			</div>
+		</div>
+
+		<div class="row footer">
+			<span class="whoami">{{ site.Params.whoami }}</span>
+			<span class="links">
+				{{ range site.Params.social }}
+					<a
+						class="icon-btn"
+						href="{{ .url }}"
+						rel="me noopener"
+						aria-label="{{ .name }}"
+					>
+						{{ partial "icon.html" (dict "name" .icon "size" 17) }}
+					</a>
+				{{ end }}
+				{{ with site.Params.cta }}
+					<a class="cta" href="{{ .url }}">
+						{{ .name }}{{ partial "icon.html" (dict "name" .icon "size" 12) }}
+					</a>
+				{{ end }}
+			</span>
+		</div>
 	</div>
-	<div class="container-fluid d-flex flex-row flex-wrap justify-content-center align-items-center mx-auto my-4">
-		{{ range $services }}
-		<a href="{{ .href }}" class="border rounded btn-contact"><div><i class="{{ .icon }} fa-2x" style="vertical-align: middle;"></i></div></a>
-		{{ end }}
-	</div>
-</div>
-
 {{ end }}

@@ -1,0 +1,20 @@
+{{/* FontAwesome icons by semantic name. Usage: {{ partial "icon.html" (dict "name" "github" "size" 15) }}
+Inlines the icon's raw SVG (mounted from the FontAwesome free package, see
+hugo.yaml) at build time. Add a key here to add an icon. */}}
+{{ $size := default 15 .size }}
+{{ $map := dict
+	"auto"     "solid/circle-half-stroke"
+	"dark"     "solid/moon"
+	"light"    "solid/sun"
+	"external" "solid/arrow-up-right-from-square"
+	"github"   "brands/github"
+	"linkedin" "brands/linkedin-in"
+	"bluesky"  "brands/bluesky"
+}}
+{{ $rel := index $map .name }}
+{{ with resources.Get (printf "icons/fontawesome/%s.svg" $rel) }}
+	{{/* Height-only sizing: FA glyphs have non-square viewBoxes, so forcing
+		width too would distort them. Width:auto preserves aspect ratio.
+	*/}}
+	{{ .Content | replaceRE `<svg ` (printf `<svg aria-hidden="true" style="height:%dpx;width:auto" ` $size) | safeHTML }}
+{{ end }}

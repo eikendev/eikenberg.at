@@ -4,34 +4,81 @@ title: "Raphael Eikenberg"
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
 
-# Do not include any taxonomies in sitemap.
 taxonomies: {}
 
-# Mount JS dependencies from node_modules into assets. Mounting any assets
-# target removes Hugo's default assets mount, so it is re-declared.
+sitemap:
+  changefreq: "monthly"
+  filename: "sitemap.xml"
+  priority: 0.5
+
+minify:
+  minifyOutput: true
+
+# Mount dependencies from node_modules. Declaring any assets target removes
+# Hugo's default assets mount, so it is re-declared.
 module:
   mounts:
     - source: assets
       target: assets
-    - source: node_modules/bootstrap/dist/js/bootstrap.bundle.min.js
-      target: assets/js/bootstrap.bundle.js
-    - source: node_modules/@fortawesome/fontawesome-free/js/all.min.js
-      target: assets/js/fontawesome.all.js
+    - source: static
+      target: static
+    - source: node_modules/@fortawesome/fontawesome-free/svgs
+      target: assets/icons/fontawesome
+    - source: node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2
+      target: static/fonts/ibm-plex-sans/ibm-plex-sans-latin-400-normal.woff2
+    - source: node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2
+      target: static/fonts/ibm-plex-sans/ibm-plex-sans-latin-600-normal.woff2
+    - source: node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2
+      target: static/fonts/ibm-plex-mono/ibm-plex-mono-latin-400-normal.woff2
+    - source: node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2
+      target: static/fonts/ibm-plex-mono/ibm-plex-mono-latin-500-normal.woff2
 
 params:
   title: "Raphael Eikenberg"
   author: "Raphael Eikenberg"
   description: "Just a few words about myself."
-  keywords: "about, portfolio, eikendev"
+  keywords: "about, portfolio, eikendev, strategy, cyber, ai"
+  themeColor: "#111112"
   images:
     - "/img/card.png"
-  social:
-    bluesky: "eikendev.bsky.social"
-    github: "eikendev"
-    linkedin: "raphael-eikenberg"
 
-# https://gohugo.io/templates/sitemap-template/
-sitemap:
-  changefreq: "monthly"
-  filename: "sitemap.xml"
-  priority: 0.5
+  brand: "eikenberg.at"
+  whoami: "Raphael Eikenberg · Europe"
+
+  work:
+    kicker: "work"
+    headline:
+      - "Digital, cyber,"
+      - "tech and AI"
+      - "strategy."
+    lines:
+      - "I work in consulting, helping teams figure out what to do next and how."
+      - "Structuring ambiguous problems, working with people, and turning ideas into decisions."
+      - "My computer science background helps me work with our clients' engineers."
+
+  play:
+    kicker: "play"
+    headline:
+      - "security/"
+      - "code/"
+      - "tinkering"
+    lines:
+      - "security and software engineering"
+      - "go, python, and a little rust"
+      - "linux, homelab, reading code"
+
+  cta:
+    icon: "external"
+    name: "eiken.dev"
+    url: "https://www.eiken.dev/"
+
+  social:
+    - name: "GitHub"
+      icon: "github"
+      url: "https://github.com/eikendev"
+    - name: "LinkedIn"
+      icon: "linkedin"
+      url: "https://www.linkedin.com/in/raphael-eikenberg/"
+    - name: "Bluesky"
+      icon: "bluesky"
+      url: "https://bsky.app/profile/eikendev.bsky.social"

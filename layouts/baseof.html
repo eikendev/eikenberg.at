@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-
-<html lang="{{ with .Site.Language.Locale }}{{ . }}{{ else }}en-US{{ end }}" dir="ltr" class="h-100" itemscope itemtype="http://schema.org/WebPage">
+<!doctype html>
+<html
+	lang="{{- with site.Language.Locale -}}
+		{{ . }}
+	{{- else -}}
+		en-US
+	{{- end -}}"
+	dir="ltr"
+	itemscope
+	itemtype="https://schema.org/WebPage"
+>
 	<head>
 		{{- partial "head.html" . -}}
 	</head>
-
-	<body class="d-flex flex-column justify-content-center align-items-center bg-dark text-light">
+	<body>
 		{{- block "content" . }}{{- end }}
 
-		{{- partial "scripts.html" . -}}
+		{{ $js := resources.Get "js/site.js" | js.Build (dict "minify" hugo.IsProduction "target" "es2019") }}
+		{{ if hugo.IsProduction }}
+			{{ $js = $js | fingerprint "sha512" }}
+		{{ end }}
+		<script
+			src="{{ $js.RelPermalink }}"
+			{{ with $js.Data.Integrity }}integrity="{{ . }}"{{ end }}
+			defer
+		></script>
 	</body>
 </html>

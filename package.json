@@ -6,13 +6,20 @@
 	"repository": "https://github.com/eikendev/eikenberg.at",
 	"author": "eikendev <raphael@eiken.dev>",
 	"private": true,
+	"scripts": {
+		"format": "prettier --write 'layouts/**/*.html' 'assets/**/*.css' 'assets/**/*.js'",
+		"format:check": "prettier --check 'layouts/**/*.html' 'assets/**/*.css' 'assets/**/*.js'",
+		"test:html": "html-validate 'public/**/*.html'"
+	},
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^7.3.1",
-		"@popperjs/core": "^2.0.0",
-		"autoprefixer": "^10.5.4",
-		"bootstrap": "^5.3.8",
-		"postcss": "^8.5.26",
-		"postcss-cli": "^11.0.1"
+		"@fontsource/ibm-plex-mono": "^5.2.5",
+		"@fontsource/ibm-plex-sans": "^5.2.5",
+		"@fortawesome/fontawesome-free": "^7.3.1"
+	},
+	"devDependencies": {
+		"html-validate": "^11.6.2",
+		"prettier": "^3.9.6",
+		"prettier-plugin-go-template": "^0.0.15"
 	},
 	"browserslist": [
 		"> 1%"
