@@ -5,8 +5,8 @@
 
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/schema.html" . }}
-{{ template "_internal/twitter_cards.html" . }}
-
+{{/* X falls back to Open Graph for title, description and image. */}}
+<meta name="twitter:card" content="summary_large_image" />
 
 <title>{{ site.Title }}</title>
 <link rel="canonical" href="{{ .Permalink }}" />
