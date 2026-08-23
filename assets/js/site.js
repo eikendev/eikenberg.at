@@ -40,8 +40,9 @@ document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
 
 // --bias: horizontal cursor position, 0 (work) .. 1 (play).
 // --act: 0 while nobody is hovering, 1 inside.
+// Skipped under reduced motion; the CSS defaults leave the page neutral.
 const page = document.querySelector("[data-split]");
-if (page) {
+if (page && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 	let raf = null;
 	let bias = 0.5;
 	let act = 0;
