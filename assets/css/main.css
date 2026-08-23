@@ -433,8 +433,7 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	/* .caret keeps blinking: a simple opacity toggle, not motion. */
-	*:not(.caret),
+	*,
 	*::before,
 	*::after {
 		animation: none !important;
