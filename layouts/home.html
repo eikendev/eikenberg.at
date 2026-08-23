@@ -4,7 +4,7 @@
 
 
 	<div class="page" data-split>
-		<div class="row topbar">
+		<header class="row topbar">
 			<span class="brand">
 				<span class="brand-mark" aria-hidden="true">
 					{{ with resources.Get "img/logo.svg" }}
@@ -30,9 +30,9 @@
 				>
 				<span data-theme-label>auto</span>
 			</button>
-		</div>
+		</header>
 
-		<div class="row split">
+		<main class="row split">
 			<div class="side side-work">
 				<p class="kicker">{{ $work.kicker }}</p>
 				<h1 class="headline">
@@ -73,9 +73,9 @@
 				</div>
 				<div class="rule"></div>
 			</div>
-		</div>
+		</main>
 
-		<div class="row footer">
+		<footer class="row footer">
 			<span class="whoami">{{ site.Params.whoami }}</span>
 			<span class="links">
 				{{ range site.Params.social }}
@@ -94,6 +94,6 @@
 					</a>
 				{{ end }}
 			</span>
-		</div>
+		</footer>
 	</div>
 {{ end }}
