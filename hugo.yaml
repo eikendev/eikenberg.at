@@ -37,7 +37,6 @@ params:
   title: "Raphael Eikenberg"
   author: "Raphael Eikenberg"
   description: "Just a few words about myself."
-  keywords: "about, portfolio, eikendev, strategy, cyber, ai"
   themeColor: "#111112"
   images:
     - "/img/card.png"
