@@ -17,8 +17,8 @@
 		"@fortawesome/fontawesome-free": "^7.3.1"
 	},
 	"devDependencies": {
-		"html-validate": "^11.15.0",
-		"prettier": "^3.9.8",
+		"html-validate": "^11.16.0",
+		"prettier": "^3.9.9",
 		"prettier-plugin-go-template": "^0.0.15"
 	},
 	"browserslist": [
