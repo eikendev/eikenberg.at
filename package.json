@@ -6,8 +6,8 @@
 	"author": "eikendev <raphael@eiken.dev>",
 	"private": true,
 	"scripts": {
-		"format": "prettier --write 'layouts/**/*.html' 'assets/**/*.css' 'assets/**/*.js'",
-		"format:check": "prettier --check 'layouts/**/*.html' 'assets/**/*.css' 'assets/**/*.js'",
+		"format": "prettier --write 'layouts/**/*.html' 'assets/**/*.{css,js}' '*.{json,yaml}' '.*.json' '.github/**/*.yaml' 'content/**/*.md'",
+		"format:check": "prettier --check 'layouts/**/*.html' 'assets/**/*.{css,js}' '*.{json,yaml}' '.*.json' '.github/**/*.yaml' 'content/**/*.md'",
 		"test:html": "html-validate 'public/**/*.html'"
 	},
 	"dependencies": {
