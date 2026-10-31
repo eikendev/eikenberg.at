@@ -2,7 +2,6 @@
 	"name": "eikenberg.at",
 	"version": "0.0.1",
 	"description": "My personal website",
-	"main": "index.js",
 	"repository": "https://github.com/eikendev/eikenberg.at",
 	"author": "eikendev <raphael@eiken.dev>",
 	"private": true,
@@ -20,8 +19,5 @@
 		"html-validate": "^11.17.0",
 		"prettier": "^3.9.10",
 		"prettier-plugin-go-template": "^0.0.15"
-	},
-	"browserslist": [
-		"> 1%"
-	]
+	}
 }
