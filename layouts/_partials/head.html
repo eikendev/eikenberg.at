@@ -4,9 +4,23 @@
 <meta name="description" content="{{ site.Params.description }}" />
 
 {{ template "_internal/opengraph.html" . }}
-{{ template "_internal/schema.html" . }}
 {{/* X falls back to Open Graph for title, description and image. */}}
 <meta name="twitter:card" content="summary_large_image" />
+
+{{/* The 432px spec matches home.html, so this reuses the portrait's 2x file. */}}
+{{ $person := dict
+	"@context" "https://schema.org"
+	"@type" "Person"
+	"name" site.Params.author
+	"url" site.BaseURL
+	"sameAs" (apply site.Params.social "index" "." "url")
+}}
+{{ with resources.Get "img/profile.webp" }}
+	{{ $person = merge $person (dict "image" (.Resize "432x432").Permalink) }}
+{{ end }}
+<script type="application/ld+json">
+	{{ $person | jsonify | safeJS }}
+</script>
 
 <title>{{ site.Title }}</title>
 <link rel="canonical" href="{{ .Permalink }}" />
