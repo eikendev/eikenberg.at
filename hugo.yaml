@@ -24,14 +24,15 @@ module:
       target: static
     - source: node_modules/@fortawesome/fontawesome-free/svgs
       target: assets/icons/fontawesome
+    # Fonts go through assets so head.html can fingerprint them.
     - source: node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2
-      target: static/fonts/ibm-plex-sans/ibm-plex-sans-latin-400-normal.woff2
+      target: assets/fonts/ibm-plex-sans/ibm-plex-sans-latin-400-normal.woff2
     - source: node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2
-      target: static/fonts/ibm-plex-sans/ibm-plex-sans-latin-600-normal.woff2
+      target: assets/fonts/ibm-plex-sans/ibm-plex-sans-latin-600-normal.woff2
     - source: node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2
-      target: static/fonts/ibm-plex-mono/ibm-plex-mono-latin-400-normal.woff2
+      target: assets/fonts/ibm-plex-mono/ibm-plex-mono-latin-400-normal.woff2
     - source: node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2
-      target: static/fonts/ibm-plex-mono/ibm-plex-mono-latin-500-normal.woff2
+      target: assets/fonts/ibm-plex-mono/ibm-plex-mono-latin-500-normal.woff2
 
 params:
   title: "Raphael Eikenberg"

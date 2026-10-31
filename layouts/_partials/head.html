@@ -26,35 +26,38 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{/* Self-hosted IBM Plex, mounted from @fontsource (see hugo.yaml), so there
-	is no third-party font request.
+	is no third-party font request. Fingerprinted, so a package bump changes
+	the URL and the long cache lifetime in _headers is safe.
 */}}
+{{ $fonts := slice }}
 {{ range slice
-	"ibm-plex-sans/ibm-plex-sans-latin-400-normal"
-	"ibm-plex-sans/ibm-plex-sans-latin-600-normal"
-	"ibm-plex-mono/ibm-plex-mono-latin-400-normal"
-	"ibm-plex-mono/ibm-plex-mono-latin-500-normal"
+	(slice "IBM Plex Sans" "400" "ibm-plex-sans/ibm-plex-sans-latin-400-normal")
+	(slice "IBM Plex Sans" "600" "ibm-plex-sans/ibm-plex-sans-latin-600-normal")
+	(slice "IBM Plex Mono" "400" "ibm-plex-mono/ibm-plex-mono-latin-400-normal")
+	(slice "IBM Plex Mono" "500" "ibm-plex-mono/ibm-plex-mono-latin-500-normal")
 }}
+	{{ $spec := . }}
+	{{ with resources.Get (printf "fonts/%s.woff2" (index $spec 2)) | fingerprint }}
+		{{ $fonts = $fonts | append (dict "family" (index $spec 0) "weight" (index $spec 1) "url" .RelPermalink) }}
+	{{ end }}
+{{ end }}
+{{ range $fonts }}
 	<link
 		rel="preload"
 		as="font"
 		type="font/woff2"
-		href="{{ (printf "fonts/%s.woff2" .) | relURL }}"
+		href="{{ .url }}"
 		crossorigin
 	/>
 {{ end }}
 <style>
-	{{ range slice
-		(slice "IBM Plex Sans" "400" "ibm-plex-sans/ibm-plex-sans-latin-400-normal")
-		(slice "IBM Plex Sans" "600" "ibm-plex-sans/ibm-plex-sans-latin-600-normal")
-		(slice "IBM Plex Mono" "400" "ibm-plex-mono/ibm-plex-mono-latin-400-normal")
-		(slice "IBM Plex Mono" "500" "ibm-plex-mono/ibm-plex-mono-latin-500-normal")
-	}}
+	{{ range $fonts }}
 		@font-face {
-			font-family: "{{ index . 0 }}";
+			font-family: "{{ .family }}";
 			font-style: normal;
-			font-weight: {{ index . 1 }};
+			font-weight: {{ .weight }};
 			font-display: swap;
-			src: url("{{ (printf "fonts/%s.woff2" (index . 2)) | relURL }}") format("woff2");
+			src: url("{{ .url }}") format("woff2");
 		}
 	{{ end }}
 </style> {{ $css := resources.Get "css/main.css" }}
