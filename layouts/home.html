@@ -13,12 +13,10 @@
 				</span>
 				{{ site.Params.brand }}
 			</span>
-			<button
-				type="button"
-				class="theme"
-				data-theme-toggle
-				aria-label="Toggle color scheme"
-			>
+			{{/* The accessible name is the visible label plus a hidden prefix, so
+				the current mode is read out, and the live region announces changes.
+			*/}}
+			<button type="button" class="theme" data-theme-toggle>
 				<span data-icon-for="system"
 					>{{ partial "icon.html" (dict "name" "auto" "size" 13) }}</span
 				>
@@ -28,7 +26,8 @@
 				<span data-icon-for="light" hidden
 					>{{ partial "icon.html" (dict "name" "light" "size" 13) }}</span
 				>
-				<span data-theme-label>auto</span>
+				<span class="sr-only">Color scheme: </span>
+				<span data-theme-label aria-live="polite">auto</span>
 			</button>
 		</header>
 
