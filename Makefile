@@ -1,22 +1,19 @@
-ENGINE_COMMAND := ${shell . ./run; echo $$ENGINE_COMMAND}
-
 HUGO := ./run hugo
 NPM := ./run npm
+
+# CI installs exactly what the lockfile says; locally the lockfile may move.
+NPM_INSTALL := $(if $(CI),ci,install)
 
 .PHONY: all
 all: build
 
 .PHONY: dependencies
 dependencies:
-	$(NPM) install
+	$(NPM) $(NPM_INSTALL)
 
 .PHONY: build
 build: dependencies
 	$(HUGO) --minify
-	# If we run using Docker, we should reset file ownership afterwards.
-ifneq (,$(findstring docker,${ENGINE_COMMAND}))
-	sudo chown -R ${shell id -u ${USER}}:${shell id -g ${USER}} ./public/
-endif
 
 .PHONY: server
 server: dependencies
