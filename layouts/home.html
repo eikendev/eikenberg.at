@@ -48,13 +48,26 @@
 
 			<div class="portrait-wrap">
 				<div class="seam" aria-hidden="true"></div>
-				<img
-					class="portrait"
-					src="{{ "img/profile.webp" | absURL }}"
-					width="216"
-					height="216"
-					alt="{{ site.Params.author }}"
-				/>
+				{{/* Rendered at 216px (see .portrait), so 1x and 2x variants suffice.
+					The 2x spec must match the one in head.html so Hugo reuses the file.
+				*/}}
+				{{ with resources.Get "img/profile.webp" }}
+					{{ $x1 := .Resize "216x216" }}
+					{{ $x2 := .Resize "432x432" }}
+					<img
+						class="portrait"
+						src="{{ $x1.RelPermalink }}"
+						srcset="
+						{{ $x1.RelPermalink }} 1x,
+						{{ $x2.RelPermalink }} 2x
+					"
+						width="216"
+						height="216"
+						alt="Portrait of {{ site.Params.author }}"
+						fetchpriority="high"
+						decoding="async"
+					/>
+				{{ end }}
 			</div>
 
 			<div class="side side-play">
