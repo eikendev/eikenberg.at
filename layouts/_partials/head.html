@@ -24,7 +24,7 @@
 		rel="preload"
 		as="font"
 		type="font/woff2"
-		href="{{ (printf "fonts/%s.woff2" .) | absURL }}"
+		href="{{ (printf "fonts/%s.woff2" .) | relURL }}"
 		crossorigin
 	/>
 {{ end }}
@@ -40,7 +40,7 @@
 			font-style: normal;
 			font-weight: {{ index . 1 }};
 			font-display: swap;
-			src: url("{{ (printf "fonts/%s.woff2" (index . 2)) | absURL }}") format("woff2");
+			src: url("{{ (printf "fonts/%s.woff2" (index . 2)) | relURL }}") format("woff2");
 		}
 	{{ end }}
 </style> {{ $css := resources.Get "css/main.css" }}
@@ -74,6 +74,6 @@
 {{ with resources.Get "img/logo.svg" }}
 	<link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml" />
 {{ end }}
-<link rel="icon" href="{{ "favicon.ico" | absURL }}" sizes="32x32" />
-<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}" />
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="32x32" />
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" />
 <meta name="theme-color" content="{{ site.Params.themeColor }}" />
