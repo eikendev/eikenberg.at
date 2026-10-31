@@ -54,22 +54,13 @@
 />
 
 {{/* Runs before first paint so a light-mode visitor never sees a dark flash.
-	Must stay in sync with the mode logic in assets/js/site.js.
+	Bundled from the same module the toggle in site.js uses.
 */}}
-<script>
-	(function () {
-		var m = "system";
-		try {
-			m = localStorage.getItem("eikenberg-mode") || "system";
-		} catch (e) {}
-		var dark =
-			m === "system"
-				? window.matchMedia("(prefers-color-scheme: dark)").matches
-				: m === "dark";
-		document.documentElement.classList.toggle("light", !dark);
-		document.documentElement.dataset.mode = m;
-	})();
-</script>
+{{ with resources.Get "js/mode-init.js" | js.Build (dict "minify" true "target" "es2019") }}
+	<script>
+		{{ .Content | safeJS }}
+	</script>
+{{ end }}
 
 {{ with resources.Get "img/logo.svg" }}
 	<link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml" />
