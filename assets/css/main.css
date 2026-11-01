@@ -155,14 +155,15 @@ a:hover {
 	gap: 8px;
 	color: var(--on);
 	font-weight: 600;
+	font-size: 14px;
 }
 .brand-mark {
 	display: inline-flex;
 }
 .brand-mark svg {
 	display: block;
-	height: 20px;
-	width: 20px;
+	height: 24px;
+	width: 24px;
 }
 
 .theme {
@@ -369,7 +370,7 @@ a:hover {
 	height: 40px;
 	align-items: center;
 	gap: 8px;
-	padding: 0 20px;
+	padding: 0 24px;
 	border-radius: 999px;
 	background: var(--primary);
 	color: var(--onprimary);
