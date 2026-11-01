@@ -1,5 +1,8 @@
 :root {
-	--accent-base: #e0b15c;
+	/* Material roles: bg = surface, s1..s3 = surface containers low..high,
+	   outline = outline, outlinev = outline variant, on = on-surface,
+	   onv = on-surface variant, primary = primary, onprimary = on-primary. */
+	--primary-base: #e0b15c;
 
 	--bg: #111112;
 	--s1: #161618;
@@ -10,8 +13,8 @@
 	--on: #ececed;
 	--onv: #a1a1a8;
 
-	--accent: var(--accent-base);
-	--onaccent: #111112;
+	--primary: var(--primary-base);
+	--onprimary: #111112;
 
 	--grid: rgba(255, 255, 255, 0.035);
 	--scan: rgba(255, 255, 255, 0.03);
@@ -35,9 +38,9 @@
 	--on: #17171a;
 	--onv: #5c5c64;
 
-	/* the light amber is unreadable on white, so the accent darkens */
-	--accent: color-mix(in oklab, var(--accent-base) 62%, #2e1c00);
-	--onaccent: #ffffff;
+	/* the light amber is unreadable on white, so the primary darkens */
+	--primary: color-mix(in oklab, var(--primary-base) 62%, #2e1c00);
+	--onprimary: #ffffff;
 
 	--grid: rgba(0, 0, 0, 0.06);
 	--scan: rgba(0, 0, 0, 0.035);
@@ -70,10 +73,10 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: var(--accent);
+	color: var(--primary);
 }
 *:focus-visible {
-	outline: 3px solid var(--accent);
+	outline: 3px solid var(--primary);
 	outline-offset: 2px;
 	border-radius: 8px;
 }
@@ -90,7 +93,7 @@ a:hover {
 	border: 0;
 }
 ::selection {
-	background: color-mix(in srgb, var(--accent) 30%, transparent);
+	background: color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .page {
@@ -185,7 +188,7 @@ a:hover {
 	color: var(--on);
 }
 .theme:active {
-	background: color-mix(in srgb, var(--accent) 18%, var(--s3));
+	background: color-mix(in srgb, var(--primary) 18%, var(--s3));
 }
 .theme svg {
 	display: block;
@@ -218,7 +221,7 @@ a:hover {
 	font-size: 11px;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: var(--accent);
+	color: var(--primary);
 }
 
 .headline {
@@ -235,7 +238,7 @@ a:hover {
 	letter-spacing: -0.02em;
 }
 .caret {
-	color: var(--accent);
+	color: var(--primary);
 	animation: caret 1.05s steps(1) infinite;
 }
 @keyframes caret {
@@ -271,12 +274,12 @@ a:hover {
 	margin-top: 20px;
 }
 .side-work .rule {
-	background: linear-gradient(90deg, var(--accent), transparent);
+	background: linear-gradient(90deg, var(--primary), transparent);
 	opacity: calc(1 - var(--act) * var(--bias) * 0.75);
 }
 .side-play .rule {
 	margin-left: auto;
-	background: linear-gradient(270deg, var(--accent), transparent);
+	background: linear-gradient(270deg, var(--primary), transparent);
 	opacity: calc(1 - var(--act) * (1 - var(--bias)) * 0.75);
 }
 
@@ -356,7 +359,7 @@ a:hover {
 	color: var(--on);
 }
 .icon-btn:active {
-	background: color-mix(in srgb, var(--accent) 16%, var(--s2));
+	background: color-mix(in srgb, var(--primary) 16%, var(--s2));
 }
 .icon-btn svg {
 	display: block;
@@ -368,12 +371,12 @@ a:hover {
 	gap: 8px;
 	padding: 0 20px;
 	border-radius: 999px;
-	background: var(--accent);
-	color: var(--onaccent);
+	background: var(--primary);
+	color: var(--onprimary);
 	font-weight: 600;
 }
 .cta:hover {
-	color: var(--onaccent);
+	color: var(--onprimary);
 	filter: brightness(1.08);
 }
 .cta svg {
